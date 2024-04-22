@@ -11,25 +11,39 @@ import UIKit
 class RMCharacterCollectionViewCell: UICollectionViewCell {
     static let cellIdentifier = "RMCharacterCollectionViewCell"
     
+    private let containerView: UIView = {
+            let view = UIView()
+            view.backgroundColor = .white
+            view.layer.cornerRadius = 12
+            view.layer.shadowColor = UIColor.black.cgColor
+            view.layer.shadowOffset = CGSize(width: 0, height: 2)
+            view.layer.shadowRadius = 4
+            view.layer.shadowOpacity = 0.2
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }()
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 12
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .medium)
-        label.textColor = .label
+        label.font = .boldSystemFont(ofSize: 17)
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let statusLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 15)
+        label.textColor = .darkGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -38,8 +52,7 @@ class RMCharacterCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .secondarySystemBackground
-        contentView.addSubview(imageView, nameLabel, statusLabel)
+        contentView.addSubview(containerView, imageView, nameLabel, statusLabel)
         addConstraint()
     }
     
@@ -49,24 +62,23 @@ class RMCharacterCollectionViewCell: UICollectionViewCell {
     
     private func addConstraint() {
         NSLayoutConstraint.activate([
-            statusLabel.heightAnchor.constraint(equalToConstant: 45),
-            
-            nameLabel.heightAnchor.constraint(equalToConstant: 45),
-            
-            statusLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-            statusLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-            
-            nameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-            nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-            
-            statusLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
-            
-            nameLabel.bottomAnchor.constraint(equalTo: statusLabel.topAnchor, constant: -5),
-            
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -4),
-            imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
+            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+                        
+            imageView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            imageView.heightAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 1.2),
+                        
+            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            nameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+            nameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+                        
+            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
+            statusLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+            statusLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
         ])
     }
     
