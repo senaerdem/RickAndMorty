@@ -106,3 +106,12 @@ class RMCharacterCollectionViewCell: UICollectionViewCell {
         }
     }
 }
+extension RMCharacterCollectionViewCell {
+    override var isHighlighted: Bool {
+        didSet {
+            UIView.animate(withDuration: 0.1) {
+                self.transform = self.isHighlighted ? CGAffineTransform(scaleX: 1.1, y: 1.1) : .identity
+            }
+        }
+    }
+}
