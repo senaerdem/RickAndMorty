@@ -99,7 +99,7 @@ final class RMCharacterListViewViewModel: NSObject {
                         with: indexPathToAdd
                     )
                     //print("post-update: \(strongSelf.cellViewModels.count)")
-                    //strongSelf.isLoadingMoreCharacters = false
+                    strongSelf.isLoadingMoreCharacters = false
                 }
             case .failure(let failure):
                 print(String(describing: failure))
