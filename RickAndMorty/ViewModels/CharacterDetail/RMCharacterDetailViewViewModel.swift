@@ -14,7 +14,7 @@ final class RMCharacterDetailViewViewModel {
     enum SectionType {
         case photo(viewModel: RMCharacterPhotoCollectionViewCellViewModel)
         case information(viewModels: [RMCharacterInfoCollectionViewCellViewModel])
-        case episodes(viewModel: [RMCharacterEpisodeCollectionViewCellViewModel])
+        case episodes(viewModels: [RMCharacterEpisodeCollectionViewCellViewModel])
     }
     
     public var sections : [SectionType] = []
@@ -35,7 +35,7 @@ final class RMCharacterDetailViewViewModel {
                 .init(),
                 .init()
             ]),
-            .episodes(viewModel: [
+            .episodes(viewModels: [
                 .init(),
                 .init(),
                 .init(),
