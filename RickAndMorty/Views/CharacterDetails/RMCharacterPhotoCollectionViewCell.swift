@@ -8,5 +8,6 @@
 import UIKit
 
 class RMCharacterPhotoCollectionViewCell: UICollectionViewCell {
+    static let cellIdentifier = "RMCharacterPhotoCollectionViewCell"
     
 }
