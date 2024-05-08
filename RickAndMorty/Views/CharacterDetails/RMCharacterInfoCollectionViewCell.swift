@@ -13,6 +13,13 @@ class RMCharacterInfoCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = .darkGray
+        contentView.layer.cornerRadius = 10
+        contentView.layer.shadowRadius = 6.0
+        contentView.layer.shadowOpacity = 0.2
+        contentView.layer.borderWidth = 1.5
+        contentView.layer.borderColor = UIColor.systemGreen.cgColor
+        
     }
     
     required init?(coder: NSCoder) {
