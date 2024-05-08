@@ -161,8 +161,8 @@
 		5DEF35252BD1AFFB00F11E0C = {
 			isa = PBXGroup;
 			children = (
-				5DEF35302BD1AFFB00F11E0C /* RickAndMorty */,
 				5DEF352F2BD1AFFB00F11E0C /* Products */,
+				5DEF35302BD1AFFB00F11E0C /* RickAndMorty */,
 			);
 			sourceTree = "<group>";
 		};
