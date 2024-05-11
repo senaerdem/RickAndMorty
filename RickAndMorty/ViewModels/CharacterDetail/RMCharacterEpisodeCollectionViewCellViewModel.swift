@@ -14,9 +14,10 @@ protocol RRMEpisodeDataRender {
 }
 
 final class RMCharacterEpisodeCollectionViewCellViewModel {
-    let episodeDataUrl: URL?
+    private let episodeDataUrl: URL?
     private var isFetching = false
     private var dataBlock: ((RRMEpisodeDataRender) -> Void)?
+    
     private var episode: RMEpisode? {
         didSet {
             guard let model = episode else {
