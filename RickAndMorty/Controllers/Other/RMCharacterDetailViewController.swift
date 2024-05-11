@@ -101,4 +101,8 @@ extension RMCharacterDetailViewController: UICollectionViewDelegate, UICollectio
                     
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        <#code#>
+    }
 }
