@@ -22,13 +22,8 @@ final class RMEpisodeListViewViewModel: NSObject {
     
     private var episodes: [RMEpisode] = [] {
         didSet {
-            //print("creating view models")
             for episode in episodes {
-                let viewModel = RMEpisodeCollectionViewCellViewModel(
-                    characterName: character.name,
-                    characterStatus: character.status,
-                    characterImageUrl: URL(string: character.image)
-                )
+                let viewModel = RMCharacterEpisodeCollectionViewCellViewModel(episodeDataUrl: URL(string: episode.url))
                 if !cellViewModels.contains(viewModel) {
                     cellViewModels.append(viewModel)
                 }
@@ -40,7 +35,7 @@ final class RMEpisodeListViewViewModel: NSObject {
     private var apiInfo: RMGetAllCharactersResponse.Info? = nil
     
     // Fetch initial set of characters(20)
-    func fetchCharacters() {
+    func fetchEpisodes() {
         RMService.shared.execute(.listCharactersRequests, expecting: RMGetAllCharactersResponse.self) { [weak self] result in
             switch result {
             case .success(let responseModel):
